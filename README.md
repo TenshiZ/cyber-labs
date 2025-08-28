@@ -16,7 +16,9 @@ scripts/ # Helper scriptsProfiles
 ## Profiles
 
 TryHackMe: https://tryhackme.com/p/TenshiZ
+
 GitHub:    https://github.com/TenshiZ
+
 LinkedIn:  https://www.linkedin.com/in/angel-antequera-gomez-279295215/
 
 ## Disclaimer
