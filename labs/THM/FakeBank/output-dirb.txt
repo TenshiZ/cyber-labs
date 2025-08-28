@@ -1,0 +1,3 @@
+---- Scanning URL: http://fakebank.thm/ ----
++ http://fakebank.thm/bank-deposit (CODE:200)
++ http://fakebank.thm/images (CODE:301)
