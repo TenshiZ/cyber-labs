@@ -8,6 +8,7 @@ All content is for **authorized, educational use only**.
 \`\`\`
 
 labs/
+
 	  THM/        # TryHackMe rooms
 
 	  HTB/        # HackTheBox retired boxes
