@@ -7,10 +7,15 @@ All content is for **authorized, educational** use only.
 ## Structure
 
 labs/
+
 THM/ # TryHackMe rooms
+
 HTB/ # HackTheBox retired boxes
+
 LocalLab/ # Exercises in my isolated VMware lab
+
 templates/ # Report and note templates
+
 scripts/ # Helper scriptsProfiles
 
 ## Profiles
