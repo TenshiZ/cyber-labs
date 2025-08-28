@@ -20,3 +20,10 @@ templates/    # Report and note templates
 scripts/      # Helper scripts
 
 \`\`\`
+
+---
+
+## 🌐 Profiles
+- TryHackMe → [TenshiZ](https://tryhackme.com/p/TenshiZ)  
+- GitHub → [@TenshiZ](https://github.com/TenshiZ)  
+- LinkedIn → [Ángel Antequera Gómez](https://www.linkedin.com/in/angel-antequera-gomez-279295215/)
