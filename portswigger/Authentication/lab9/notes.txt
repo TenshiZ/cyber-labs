@@ -1,0 +1,25 @@
+ This lab's two-factor authentication is vulnerable to brute-forcing. You have already obtained a valid username and password, but do not have access to the user's 2FA verification code. To solve the lab, brute-force the 2FA code and access Carlos's account page.
+
+Victim's credentials: carlos:montoya 
+
+
+Note
+
+As the verification code will reset while you're running your attack, you may need to repeat this attack several times before you succeed. This is because the new code may be a number that your current Intruder attack has already attempted.
+
+
+
+ In Burp, click Settings to open the Settings dialog, then click Sessions. In the Session Handling Rules panel, click Add. The Session handling rule editor dialog opens.
+In the dialog, go to the Scope tab. Under URL Scope, select the option Include all URLs.
+Go back to the Details tab and under Rule Actions, click Add > Run a macro.
+
+Under Select macro click Add to open the Macro Recorder. Select the following 3 requests:
+GET /login
+POST /login
+GET /login2
+
+Then click OK. The Macro Editor dialog opens.
+Click Test macro and check that the final response contains the page asking you to provide the 4-digit security code. This confirms that the macro is working correctly. 
+
+
+403	0402	302	143	false	false	188	

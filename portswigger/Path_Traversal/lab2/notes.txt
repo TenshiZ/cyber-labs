@@ -1,0 +1,11 @@
+Lab: File path traversal, traversal sequences blocked with absolute path bypass
+
+ This lab contains a path traversal vulnerability in the display of product images.
+
+The application blocks traversal sequences but treats the supplied filename as being relative to a default working directory.
+
+To solve the lab, retrieve the contents of the /etc/passwd file. 
+
+They block traversal path so lets try using /etc/passwd directly
+
+DONE :D

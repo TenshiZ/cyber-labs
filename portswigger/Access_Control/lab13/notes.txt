@@ -1,0 +1,22 @@
+Lab: Referer-based access control 
+
+ This lab controls access to certain admin functionality based on the Referer header. You can familiarize yourself with the admin panel by logging in using the credentials administrator:admin.
+
+To solve the lab, log in using the credentials wiener:peter and exploit the flawed access controls to promote yourself to become an administrator
+
+https://0ae800ee0312707180e3df9e00e200c9.web-security-academy.net/admin
+
+
+GET /admin-roles?username=carlos&action=downgrade HTTP/2
+
+, lets try to get /admin and then /admin-roles?username=wiener&action=upgrade
+
+lets see
+
+/admin https://0ae800ee0312707180e3df9e00e200c9.web-security-academy.net/admin
+
+"Unauthorized"
+
+lets get our session and try it in burp suite
+
+You need to log in :D

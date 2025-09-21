@@ -1,0 +1,25 @@
+ Lab: Broken brute-force protection, IP block
+ 
+ This lab is vulnerable due to a logic flaw in its password brute-force protection. To solve the lab, brute-force the victim's password, then log in and access their account page.
+
+    Your credentials: wiener:peter
+    Victim's username: carlos
+    Candidate passwords
+
+we have only to 2 attempts
+
+then we need to use something like 
+
+wiener
+
+carlos
+
+carlos
+
+wiener
+
+100 times carlos then we need 50 wiener
+
+and the same with the password
+
+74	carlos	charlie	302	135	false	false	188	

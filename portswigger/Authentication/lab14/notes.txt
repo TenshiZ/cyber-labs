@@ -1,0 +1,23 @@
+Lab: Password brute-force via password change
+
+ This lab's password change functionality makes it vulnerable to brute-force attacks. To solve the lab, use the list of candidate passwords to brute-force Carlos's account and access his "My account" page.
+
+    Your credentials: wiener:peter
+    Victim's username: carlos 
+
+when we want to change our passwords this are the hidden fields
+
+username=wiener&current-password=peter new-password-1=peter1&new-password-2=peter1
+
+lets try changging wiener to carlos
+
+didnt work, we need the password too,
+we cant make the brute-forced in the login because it lets u only one attempt
+
+lets do it in the change password
+
+we notice that if we put different new password we can know if the current password is correct 
+
+77	cheese	200	150	false	false	4013	Current password is incorrect	
+
+57	112233	200	536	false	false	4010	New passwords do not match	

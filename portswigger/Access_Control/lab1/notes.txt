@@ -1,0 +1,20 @@
+Lab: Unprotected admin functionality
+
+ This lab has an unprotected admin panel.
+
+Solve the lab by deleting the user carlos. 
+
+looking for some url 
+
+we tried /admin nothing
+
+we tried /robots.txt and we found:
+
+User-agent: *
+Disallow: /administrator-panel
+
+lets see /administrator-panel
+
+We are in the panel, lets delete carlos account
+
+DONE

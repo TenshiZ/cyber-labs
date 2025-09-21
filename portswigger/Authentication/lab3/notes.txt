@@ -1,0 +1,38 @@
+Lab: Username enumeration via response timing
+
+ This lab is vulnerable to username enumeration using its response times. To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page.
+
+    Your credentials: wiener:peter
+    Candidate usernames
+    Candidate passwords
+
+
+Tests 
+
+    Very long long password
+
+    with:
+
+        right user: 3076ms
+        wrong user: 112ms
+
+
+You have made too many incorrect login attempts
+Pls try again in 30 minute(s)
+
+
+X-Forwarded-For: 1 and gstay changing the number
+
+columns responses and check
+
+valid users? 
+	
+
+	
+59	61	amarillo	200	16479	false	false	3249	
+
+3249 ms response
+
+password?
+
+29	131	121212	302	105	false	false	190	

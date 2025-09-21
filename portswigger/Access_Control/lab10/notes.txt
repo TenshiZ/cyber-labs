@@ -1,0 +1,30 @@
+Lab: User ID controlled by request parameter with password disclosure
+
+ This lab has user account page that contains the current user's existing password, prefilled in a masked input.
+
+To solve the lab, retrieve the administrator's password, then use it to delete the user carlos.
+
+You can log in to your own account using the following credentials: wiener:peter 
+
+
+https://0a58005604eab6fe818e254a0011001a.web-security-academy.net/my-account?id=wiener
+
+lets try to go administrator
+
+okay, we are in, lets change administrator password
+to peter
+
+We dont have permision, lets try to see the password in the response
+
+
+                           <label>Password</label>
+                            <input required type="hidden" name="csrf" value="z7pOjoBqNR2aAbsYxpThVboA7yJ4uWjC">
+                            <input required type=password name=password value='g0b4x6o8j7m6k8pcpple'/>
+                            <button class='button' type='submit'> Update password </button>
+got it 
+
+administrator : g0b4x6o8j7m6k8pcpple
+
+Admin panel, delete carlos
+
+DONE

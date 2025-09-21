@@ -1,0 +1,9 @@
+Lab: Broken brute-force protection, multiple credentials per request
+
+ This lab is vulnerable due to a logic flaw in its brute-force protection. To solve the lab, brute-force Carlos's password, then access his account page.
+
+    Victim's username: carlos
+    Candidate passwords
+
+
+    {"username":"carlos","password":"a"}

